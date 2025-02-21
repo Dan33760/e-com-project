@@ -1,0 +1,28 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+<body>
+
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+
+        <% if (prods.length) { %>
+            <div class="product-grid">
+                <% for(let product of prods) { %>
+                    <div class="card">  
+                        <!-- <img src="https://cdn.pixabay.com/photo/2025/01/13/19/40/horse-9331340_1280.jpg" alt="Produit 1"> Remplacez par l'URL de votre image   -->
+                        <img src="<%= product.imageUrl %>" alt="Produit 1"> <!-- Remplacez par l'URL de votre image -->  
+                        <h2><%= product.title %></h2>  
+                        <p class="price">€<%= product.price %></p>  
+                        <p class="description"><%= product.description %></p>
+                        <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                    </div>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No Products Found !</h1>
+        <% } %>
+    </main>
+
+<%- include('../includes/end.ejs') %>
