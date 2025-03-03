@@ -1,8 +1,7 @@
 const Product = require('../models/product');
-// const Order = require('../models/order');
 
 exports.getProducts = (req, res, next) => {
-    Product.fetchAll()
+    Product.find()
         .then(products => {
             res.render('shop/product-list', {
                 prods: products,
@@ -28,7 +27,7 @@ exports.getProduct = (req, res, next) => {
 }
 
 exports.getIndex = (req, res, next) => {
-    Product.fetchAll()
+    Product.find()
         .then(products => {
             res.render('shop/index', {
                 prods: products,
@@ -81,7 +80,6 @@ exports.postOrder = (req, res, next) => {
     req.user
         .addOrder()
         .then(result => {
-            console.log(result)
             res.redirect('/orders');
         })
         .catch(err => console.log(err));
