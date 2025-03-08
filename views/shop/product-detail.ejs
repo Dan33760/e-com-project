@@ -13,7 +13,9 @@
                 <p class="price">€<%= product.price %></p>  
                 <p class="description"><%= product.description %></p>  
                 
-                <%- include('../includes/add-to-cart.ejs', {product: product}) %>  
+                <% if(isAuthenticated) { %>
+                    <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                <% }  %> 
                 
                 <a href="/products" class="cart_btn">Back to Products</a>  
             </div>  

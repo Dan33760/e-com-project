@@ -18,7 +18,11 @@
                         
                         <div class="card_action">
                             <a href="/products/<%= product._id %>" class="cart_btn edit">Details</a>
-                            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                            
+                            <% if(isAuthenticated) { %>
+                                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                            <% }  %>
+                                
                         </div>
                     </div>
                 <% } %>
