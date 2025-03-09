@@ -26,6 +26,7 @@
             <% if(!isAuthenticated) { %>
                 <li class="main-header_item">
                     <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                    <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
                 </li>
             <% } else { %>
                 <li class="main-header_item">
