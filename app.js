@@ -53,6 +53,7 @@ app.use((req, res, next) => {
     User.findById(req.session.user._id)
         .then(user => {
             req.user = user;
+            res.locals.userName = user.name
             next();
         })
         .catch(err => console.log(err));
@@ -60,7 +61,6 @@ app.use((req, res, next) => {
 
 // Disponibiliser les variable sur chaque page
 app.use((req, res, next) => {
-    res.locals.userName = req.user.name;
     res.locals.isAuthenticated = req.session.isLoggedIn;
     res.locals.csrfToken = req.csrfToken();
     next();
