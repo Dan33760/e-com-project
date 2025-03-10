@@ -183,3 +183,19 @@ button:active {
     color: white;
     background-color: #ac0000;
 }
+
+.message{
+    width: 300px;
+    margin: auto;
+    padding: 5px 20px;
+    color: white;
+    border: 1px solid rgb(159, 159, 159);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.error-message{
+    background-color: #f8030348;;
+    border: 1px solid #f80303;
+    color: #f80303;
+}

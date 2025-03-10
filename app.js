@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-const csurf = require('csurf')
+const csurf = require('csurf');
+const flash = require('connect-flash');
 
 const errorsController = require('./controllers/error');
 const User = require('./models/user');
@@ -30,6 +31,8 @@ const authRoutes = require('./routes/auth');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Initialiser le session
 app.use(
     session({
         secret: 'my session',
@@ -39,6 +42,7 @@ app.use(
     })  
 );
 app.use(csurfProtection);
+app.use(flash())
 
 // Ajouter l'utilisateur sur chaque requete s'il est Authentifier
 app.use((req, res, next) => {
