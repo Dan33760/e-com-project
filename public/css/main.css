@@ -199,3 +199,10 @@ button:active {
     border: 1px solid #f80303;
     color: #f80303;
 }
+
+.auth-link{
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
