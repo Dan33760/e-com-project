@@ -206,3 +206,9 @@ button:active {
     margin: auto;
     margin-top: 10px;
 }
+
+.form-control input.invalid,
+.form-control textarea.invalid{
+    /* border-color: #f80303; */
+    border: 2px solid #f80303;
+}
