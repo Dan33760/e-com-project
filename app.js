@@ -52,11 +52,16 @@ app.use((req, res, next) => {
 
     User.findById(req.session.user._id)
         .then(user => {
+            if(!user) {
+                return next();
+            }
             req.user = user;
             res.locals.userName = user.name
             next();
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            next(new Error(err));
+        });
 });
 
 // Disponibiliser les variable sur chaque page
@@ -71,8 +76,15 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
 
+app.use('/500', errorsController.get500);
+
 // PAGE NOT FOUND
 app.use(errorsController.getNotFound);
+
+// Add Error Handling middleware with express
+app.use((error, req, res, next) => {
+    res.redirect('/500');
+})
 
 // Connecter a la base de donnees
 mongoose
