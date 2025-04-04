@@ -212,3 +212,23 @@ button:active {
     /* border-color: #f80303; */
     border: 2px solid #f80303;
 }
+
+.pagination {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #dbc441;
+    padding: 0.5rem;
+    border: 1px solid #dbc441;
+    margin: 0 1rem;
+}
+
+.pagination a:hover,
+.pagination a:active,
+.pagination a.active {
+    background: #dbc441;
+    color: white;
+}
